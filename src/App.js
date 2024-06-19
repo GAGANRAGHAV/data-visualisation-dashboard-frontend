@@ -5,11 +5,7 @@ import { Bar, Pie, Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import { CategoryScale } from 'chart.js';
 import Heatmap from 'react-heatmap-grid';
-
-
-import { Grid, Typography, FormControl, InputLabel, Select, MenuItem, Paper,  } from '@mui/material';
-import Navbar from './Navbar';
-
+import './App.css';
 
 Chart.register(CategoryScale);
 
@@ -117,177 +113,101 @@ const App = () => {
 
   return (
     <div>
-      <Navbar/>
-      <Grid container spacing={3}>
+      <nav className="navbar">
+        <h1>Dashboard</h1>
+      </nav>
+      <div className="container">
         {/* Sidebar */}
-        <Grid item xs={3}>
-          <Paper style={{ padding: '20px' }}>
-            <Typography variant="h6">Filters</Typography>
-            <FormControl fullWidth variant="outlined" sx={{ marginBottom: '10px' }}>
-              <InputLabel htmlFor="endYear">End Year</InputLabel>
-              <Select
-                value={filters.endYear}
-                onChange={handleFilterChange}
-                label="End Year"
-                inputProps={{
-                  name: 'endYear',
-                  id: 'endYear',
-                }}
-              >
-                <MenuItem value="">All</MenuItem>
-                {filterOptions.endYears.map(year => <MenuItem key={year} value={year}>{year}</MenuItem>)}
-              </Select>
-            </FormControl>
-
-               {/* Topic filter */}
-               <FormControl fullWidth variant="outlined" sx={{ marginBottom: '10px' }}>
-              <InputLabel htmlFor="topic">Topic</InputLabel>
-              <Select
-                value={filters.topic}
-                onChange={handleFilterChange}
-                label="Topic"
-                inputProps={{
-                  name: 'topic',
-                  id: 'topic',
-                }}
-              >
-                <MenuItem value="">All</MenuItem>
-                {filterOptions.topics.map(topic => <MenuItem key={topic} value={topic}>{topic}</MenuItem>)}
-              </Select>
-            </FormControl>
-
-            {/* Sector filter */}
-            <FormControl fullWidth variant="outlined" sx={{ marginBottom: '10px' }}>
-              <InputLabel htmlFor="sector">Sector</InputLabel>
-              <Select
-                value={filters.sector}
-                onChange={handleFilterChange}
-                label="Sector"
-                inputProps={{
-                  name: 'sector',
-                  id: 'sector',
-                }}
-              >
-                <MenuItem value="">All</MenuItem>
-                {filterOptions.sectors.map(sector => <MenuItem key={sector} value={sector}>{sector}</MenuItem>)}
-              </Select>
-            </FormControl>
-
-            {/* Region filter */}
-            <FormControl fullWidth variant="outlined" sx={{ marginBottom: '10px' }}>
-              <InputLabel htmlFor="region">Region</InputLabel>
-              <Select
-                value={filters.region}
-                onChange={handleFilterChange}
-                label="Region"
-                inputProps={{
-                  name: 'region',
-                  id: 'region',
-                }}
-              >
-                <MenuItem value="">All</MenuItem>
-                {filterOptions.regions.map(region => <MenuItem key={region} value={region}>{region}</MenuItem>)}
-              </Select>
-            </FormControl>
-
-            {/* Pest filter */}
-            <FormControl fullWidth variant="outlined" sx={{ marginBottom: '10px' }}>
-              <InputLabel htmlFor="pest">Pest</InputLabel>
-              <Select
-                value={filters.pest}
-                onChange={handleFilterChange}
-                label="Pest"
-                inputProps={{
-                  name: 'pest',
-                  id: 'pest',
-                }}
-              >
-                <MenuItem value="">All</MenuItem>
-                {filterOptions.pests.map(pest => <MenuItem key={pest} value={pest}>{pest}</MenuItem>)}
-              </Select>
-            </FormControl>
-
-            {/* Source filter */}
-            <FormControl fullWidth variant="outlined" sx={{ marginBottom: '10px' }}>
-              <InputLabel htmlFor="source">Source</InputLabel>
-              <Select
-                value={filters.source}
-                onChange={handleFilterChange}
-                label="Source"
-                inputProps={{
-                  name: 'source',
-                  id: 'source',
-                }}
-              >
-                <MenuItem value="">All</MenuItem>
-                {filterOptions.sources.map(source => <MenuItem key={source} value={source}>{source}</MenuItem>)}
-              </Select>
-            </FormControl>
-
-            {/* SWOT filter */}
-            <FormControl fullWidth variant="outlined" sx={{ marginBottom: '10px' }}>
-              <InputLabel htmlFor="swot">SWOT</InputLabel>
-              <Select
-                value={filters.swot}
-                onChange={handleFilterChange}
-                label="SWOT"
-                inputProps={{
-                  name: 'swot',
-                  id: 'swot',
-                }}
-              >
-                <MenuItem value="">All</MenuItem>
-                {filterOptions.swots.map(swot => <MenuItem key={swot} value={swot}>{swot}</MenuItem>)}
-              </Select>
-            </FormControl>
-
-            <FormControl fullWidth variant="outlined" sx={{ marginBottom: '10px' }}>
-              <InputLabel htmlFor="country">Country</InputLabel>
-              <Select
-                value={filters.country}
-                onChange={handleFilterChange}
-                label="Country"
-                inputProps={{
-                  name: 'country',
-                  id: 'country',
-                }}
-              >
-                <MenuItem value="">All</MenuItem>
-                {filterOptions.countries.map(country => <MenuItem key={country} value={country}>{country}</MenuItem>)}
-              </Select>
-              </FormControl>
-
-            {/* Add other filter Select components similarly */}
-          </Paper>
-        </Grid>
+        <div className="sidebar">
+          <h2>Filters</h2>
+          <div className="filter">
+            <label htmlFor="endYear">End Year</label>
+            <select name="endYear" id="endYear" value={filters.endYear} onChange={handleFilterChange}>
+              <option value="">All</option>
+              {filterOptions.endYears.map(year => <option key={year} value={year}>{year}</option>)}
+            </select>
+          </div>
+          <div className="filter">
+            <label htmlFor="topic">Topic</label>
+            <select name="topic" id="topic" value={filters.topic} onChange={handleFilterChange}>
+              <option value="">All</option>
+              {filterOptions.topics.map(topic => <option key={topic} value={topic}>{topic}</option>)}
+            </select>
+          </div>
+          <div className="filter">
+            <label htmlFor="sector">Sector</label>
+            <select name="sector" id="sector" value={filters.sector} onChange={handleFilterChange}>
+              <option value="">All</option>
+              {filterOptions.sectors.map(sector => <option key={sector} value={sector}>{sector}</option>)}
+            </select>
+          </div>
+          <div className="filter">
+            <label htmlFor="region">Region</label>
+            <select name="region" id="region" value={filters.region} onChange={handleFilterChange}>
+              <option value="">All</option>
+              {filterOptions.regions.map(region => <option key={region} value={region}>{region}</option>)}
+            </select>
+          </div>
+          <div className="filter">
+            <label htmlFor="pest">Pest</label>
+            <select name="pest" id="pest" value={filters.pest} onChange={handleFilterChange}>
+              <option value="">All</option>
+              {filterOptions.pests.map(pest => <option key={pest} value={pest}>{pest}</option>)}
+            </select>
+          </div>
+          <div className="filter">
+            <label htmlFor="source">Source</label>
+            <select name="source" id="source" value={filters.source} onChange={handleFilterChange}>
+              <option value="">All</option>
+              {filterOptions.sources.map(source => <option key={source} value={source}>{source}</option>)}
+            </select>
+          </div>
+          <div className="filter">
+            <label htmlFor="swot">SWOT</label>
+            <select name="swot" id="swot" value={filters.swot} onChange={handleFilterChange}>
+              <option value="">All</option>
+              {filterOptions.swots.map(swot => <option key={swot} value={swot}>{swot}</option>)}
+            </select>
+          </div>
+          <div className="filter">
+            <label htmlFor="country">Country</label>
+            <select name="country" id="country" value={filters.country} onChange={handleFilterChange}>
+              <option value="">All</option>
+              {filterOptions.countries.map(country => <option key={country} value={country}>{country}</option>)}
+            </select>
+          </div>
+        </div>
 
         {/* Main content */}
-        <Grid item xs={9}>
-          <Paper style={{ padding: '20px' }}>
+        <div className="main-content">
+          <div className="chart">
             <Bar data={barChartData} />
+          </div>
+          <div className="chart">
             <Pie data={pieChartData} />
+          </div>
+          <div className="chart">
             <Line data={lineChartData} />
-            <div>
-              <Heatmap
-                xLabels={heatmapData.xLabels}
-                yLabels={heatmapData.yLabels}
-                data={heatmapData.data}
-                xLabelsLocation={"bottom"}
-                xLabelWidth={100}
-                yLabelWidth={50}
-                cellStyle={(background, value, min, max, data, x, y) => ({
-                  background: `rgb(66, 86, 244, ${1 - (max - value) / (max - min)})`,
-                  fontSize: "11.5px"
-                })}
-                cellRender={value => value && `${value}`}
-              />
-            </div>
-          </Paper>
-        </Grid>
-      </Grid>
+          </div>
+          <div className="chart">
+            <Heatmap
+              xLabels={heatmapData.xLabels}
+              yLabels={heatmapData.yLabels}
+              data={heatmapData.data}
+              xLabelsLocation={"bottom"}
+              xLabelWidth={100}
+              yLabelWidth={50}
+              cellStyle={(background, value, min, max, data, x, y) => ({
+                background: `rgb(66, 86, 244, ${1 - (max - value) / (max - min)})`,
+                fontSize: "11.5px"
+              })}
+              cellRender={value => value && `${value}`}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default App;
-
