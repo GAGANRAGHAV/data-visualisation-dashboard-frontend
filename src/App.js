@@ -4,11 +4,10 @@ import axios from 'axios';
 import { Bar, Pie, Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import { CategoryScale } from 'chart.js';
-import { Chart as ChartJS, Tooltip, Title, Legend } from 'chart.js';
 import Heatmap from 'react-heatmap-grid';
 
 
-import { Grid, Typography, FormControl, InputLabel, Select, MenuItem, Paper, Drawer, List, ListItem, ListItemText } from '@mui/material';
+import { Grid, Typography, FormControl, InputLabel, Select, MenuItem, Paper,  } from '@mui/material';
 import Navbar from './Navbar';
 
 
